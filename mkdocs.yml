@@ -9,8 +9,8 @@ nav:
     - characteristics.md
     - business prosess.md
     - requirements.md 
-   - Модели:
-     - architecture.md
+   # - Модели:
+    # - architecture.md
     # - sequence.md
   # - Дизайн:
     # - design.md
