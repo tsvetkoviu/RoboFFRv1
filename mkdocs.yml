@@ -14,7 +14,8 @@ nav:
   - Интерфейсы:
     - design.md
     - api.md
-  - Задачи: page2.md
+  - Задачи: 
+    - tasks.md
  # - Page3: page3.md
 theme: 
   name: material #mkdocs  #readthedocs  # или "material" для красивого дизайна
