@@ -15,7 +15,7 @@
 <body>
   <div id="redoc-container"></div>
   <script>
-    Redoc.init('https://raw.githubusercontent.com/<ваш-username>/<репозиторий>/main/RobotPetProj-3.0.1.json', {}, document.getElementById('redoc-container'));
+    Redoc.init('https://raw.githubusercontent.com/tsvetkoviu/RoboFFRv1/main/RobotPetProj-3.0.1.json', {}, document.getElementById('redoc-container'));
   </script>
 </body>
 </html>
