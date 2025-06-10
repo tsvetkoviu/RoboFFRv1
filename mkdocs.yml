@@ -9,6 +9,7 @@ nav:
     - characteristics.md
     - business prosess.md
     - requirements.md 
+    - nfr.md
   - Модели:
     - architecture.md
   - Интерфейсы:
