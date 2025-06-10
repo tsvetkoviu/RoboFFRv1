@@ -19,3 +19,13 @@
   </script>
 </body>
 </html>
+
+## API link OpenAPI
+
+<iframe 
+    src="https://app.swaggerhub.com/apis/tsvetkoviu/RobotPetProj/3.0.1" 
+    width="100%" 
+    height="800" 
+    frameborder="0" 
+    scrolling="no">
+</iframe>
