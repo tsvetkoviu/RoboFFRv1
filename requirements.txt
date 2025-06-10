@@ -1,0 +1,2 @@
+mkdocs>=1.4.0
+mkdocs-swagger-ui-tag>=0.5.0
