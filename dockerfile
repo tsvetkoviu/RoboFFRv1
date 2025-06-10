@@ -13,6 +13,7 @@ FROM squidfunk/mkdocs-material
 # RUN pip3 install mkdocs-table-reader-plugin
 # RUN pip install mkdocs-with-pdf
 RUN pip install mkdocs-glightbox
+RUN pip install mkdocs-material
 #RUN pip install lightgallery
 RUN pip install mkdocs-swagger-ui-tag
 RUN pip3 install mkdocs-build-plantuml-plugin
