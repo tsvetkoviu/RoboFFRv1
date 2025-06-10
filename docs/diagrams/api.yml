@@ -3,10 +3,6 @@ info:
   title: RoboPoint Restoran API
   version: 3.0.1
 
-servers:
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/tsvetkoviu/RobotPetProj/3.0.1
-
 paths:
   /auth/login:
     post:
@@ -134,7 +130,7 @@ paths:
                     description: Текущая страница
                   pageSize:
                     type: integer
-                    description: Количество блюд на странице
+                    description: Количество блюд на странице        
 
   /orders/{orderId}/status:
     get:
@@ -168,7 +164,7 @@ paths:
   /orders:
     post:
       tags: 
-        - Управление заказами
+        - управление заказами
       security:
         - bearerAuth: []
       summary: Оформление заказа
@@ -207,14 +203,10 @@ paths:
                   total_cost:
                     type: integer
                 example:
-                  - productId: "1"
-                    quantity: "2"
-                    name: "Бургер"
-                    price: 150
-                  - productId: "2"
-                    quantity: "1"
-                    name: "Картофель фри"
-                    price: 75.00
+                  productId: "1"
+                  quantity: "2"
+                  name: "Бургер"
+                  price: 150
         '400':
           description: Ошибка в запросе
           content:
@@ -305,3 +297,149 @@ paths:
           schema:
             type: string
         - name: userId
+          in: query
+          required: false
+          description: Уникальный идентификатор клиента
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - rating
+                - comment
+              properties:
+                rating:
+                  type: string
+                  enum:
+                    - Замечательно
+                    - Очень хорошо
+                    - Хорошо
+                    - Плохо
+                    - Очень плохо
+                    - Отвратительно
+                  description: Рейтинг блюда от пользователя
+                comment:
+                  type: string
+                  description: Текстовый отзыв пользователя
+      responses:
+        '201': 
+          description: Отзыв успешно добавлен
+        '400':
+          description: Неверный запрос
+        '401':
+          description: Пользователь не авторизован
+        '404':
+          description: Блюдо не найдено
+        '500':
+          description: Внутренняя ошибка сервера
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Dish:
+      description: |
+        Объект "Блюдо". Содержит основную информацию о блюде меню, включая его идентификатор, название и ссылку на изображение.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор блюда
+        name:
+          type: string
+          description: Название блюда
+        imageLink:
+          type: string
+          format: url
+          example: https://static.wikia.nocookie.net/harrypotter/images/c/c5/Pumpkin_Juice_WWHP.jpg/revision/latest/scale-to-width-down/1000?cb=20110529053444
+          description: Ссылка на изображение блюда
+
+    Order:
+      description: |
+        Информация о заказе, включая статус, список позиций, даты, адрес и способ оплаты.
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Уникальный идентификатор заказа
+        status:
+          type: string
+          description: Текущий статус заказа
+        items:
+          type: array
+          description: Массив позиций заказа
+          items:
+            $ref: '#/components/schemas/OrderItems'
+        totalPrice:
+          type: number
+          format: float
+          description: Общая стоимость заказа
+        orderDate:
+          type: string
+          format: date-time
+          description: Дата и время создания заказа
+        deliveryDate:
+          type: string
+          format: date-time
+          description: Дата и время доставки заказа
+        deliveryAddress:
+          type: string
+          description: Адрес доставки
+        paymentMethod:
+          type: string
+          description: Используемый способ оплаты
+          enum:
+            - card
+            - ewallet
+            - sbp
+            - tpay
+            - spay
+            - cash
+
+    OrderItems:
+      description: |
+        Корзина товаров или позиции в заказе — составной объект из массива товаров с их количеством, названием и ценой.
+      type: object
+      properties:
+        items:
+          type: array
+          description: Массив товаров в заказе или корзине
+          items:
+            type: object
+            description: Описание одного товара в заказе/корзине
+            properties: 
+              productId: 
+                type: string
+                description: Уникальный идентификатор товара
+              quantity:
+                type: integer
+                description: Количество единиц товара
+              name:
+                type: string
+                description: Наименование товара
+              price:
+                type: number
+                format: float
+                description: Цена единицы товара
+      example:
+        items:
+          - productId: "1"
+            quantity: 2
+            name: "Бургер"
+            price: 150
+          - productId: "2"
+            quantity: 1
+            name: "Картофель фри"
+            price: 75.00
+
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/tsvetkoviu/RobotPetProj/3.0.1
