@@ -8,7 +8,7 @@
 
 <!--<iframe width="1600" height="900" style="border: 1px solid rgba(0, 0, 0, 0.1);" src="https://app.holst.so/share/b/51f682ba-1b04-49bc-9008-8ee60f139ade" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>-->
 
-Вот файл разметки Markdown для вашего запроса: здесь приведены общие Definition of Ready, Definition of Done, Acceptance Criteria на русском, а также конкретный пример Acceptance Criteria для фичи "Оформить онлайн-заказ":
+
 # Стандарты выполнения пользовательских историй
 
 ## Определение готовности (Definition of Ready, DoR)
