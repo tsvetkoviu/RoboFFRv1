@@ -1,4 +1,4 @@
-# API терминала покупателя
+# API табло покупателя
 
 <swagger-ui src= "https://raw.githubusercontent.com/tsvetkoviu/RoboFFRv1/master/docs/diagrams/api_screen.yml" />
 
