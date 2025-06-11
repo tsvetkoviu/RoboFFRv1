@@ -20,6 +20,7 @@ nav:
   - Задачи: 
     - tasks.md
     - mvp.md
+    - testscenarios.md
 theme: 
   name: material #mkdocs  #readthedocs  # или "material" для красивого дизайна
   features:
