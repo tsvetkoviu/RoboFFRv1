@@ -19,6 +19,7 @@ nav:
     - api_screen.md
   - Задачи: 
     - tasks.md
+    - mvp.md
 theme: 
   name: material #mkdocs  #readthedocs  # или "material" для красивого дизайна
   features:
