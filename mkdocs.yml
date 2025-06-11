@@ -16,6 +16,7 @@ nav:
     - design.md
     - api.md
     - api_tablo.md
+    - api_screen.md
   - Задачи: 
     - tasks.md
 theme: 
