@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Customer Board API
-  description: |
+  title: API табло покупателя
+   description: |
     API для управления отображением статусов заказов на табло покупателя.
     Позволяет получать актуальную информацию о готовности заказов.
   version: 1.0.0
