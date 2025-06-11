@@ -1,0 +1,120 @@
+openapi: 3.0.0
+info:
+  title: API табло покупателя
+  description: |
+    API для управления отображением статусов заказов на табло покупателя.
+    Позволяет получать актуальную информацию о готовности заказов.
+  version: 3.0.1
+
+servers:
+  - url: https://api.yourdomain.com/v1
+    description: Production server
+
+tags:
+  - name: Orders
+    description: Операции со статусами заказов
+
+paths:
+  /api/orders/active:
+    get:
+      tags: [Orders]
+      summary: Получить список активных заказов
+      description: Возвращает заказы, которые сейчас готовятся или готовы к выдаче
+      responses:
+        200:
+          description: Список активных заказов
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ActiveOrdersResponse"
+              example:
+                orders:
+                  - order_id: "order_123"
+                    status: "preparing"
+                    items:
+                      - name: "Бургер"
+                        quantity: 1
+                    estimated_time: "5 мин"
+                    pickup_location: "Стойка 2"
+                  - order_id: "order_124"
+                    status: "ready"
+                    items:
+                      - name: "Кофе"
+                        quantity: 2
+                    pickup_location: "Стойка 1"
+
+  /api/orders/{order_id}/status:
+    get:
+      tags: [Orders]
+      summary: Получить статус конкретного заказа
+      parameters:
+        - name: order_id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Статус заказа
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderStatusResponse"
+              example:
+                order_id: "order_123"
+                status: "ready"
+                status_changed_at: "2023-05-15T14:30:00Z"
+                pickup_location: "Стойка 3"
+
+components:
+  schemas:
+    ActiveOrdersResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              order_id:
+                type: string
+              status:
+                type: string
+                enum: [preparing, ready, delayed]
+              items:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    quantity:
+                      type: integer
+              estimated_time:
+                type: string
+                nullable: true
+              pickup_location:
+                type: string
+
+    OrderStatusResponse:
+      type: object
+      properties:
+        order_id:
+          type: string
+        status:
+          type: string
+          enum: [preparing, ready, delayed, cancelled]
+        status_changed_at:
+          type: string
+          format: date-time
+        pickup_location:
+          type: string
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []

@@ -1,0 +1,1489 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../mvp/">
+      
+      
+        <link rel="next" href="../TestScenariosR1/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Сценарии тестирования для задач MVP - RoboticFFR SA.Advanced</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="lime">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mvp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="RoboticFFR SA.Advanced" class="md-header__button md-logo" aria-label="RoboticFFR SA.Advanced" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            RoboticFFR SA.Advanced
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Сценарии тестирования для задач MVP
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="lime"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  Домашняя страница
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../glossary/" class="md-tabs__link">
+          
+  
+  
+  Документация
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../architecture/" class="md-tabs__link">
+          
+  
+  
+  Модели
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../design/" class="md-tabs__link">
+          
+  
+  
+  Интерфейсы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../tasks/" class="md-tabs__link">
+          
+  
+  
+  Задачи
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="RoboticFFR SA.Advanced" class="md-nav__button md-logo" aria-label="RoboticFFR SA.Advanced" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    RoboticFFR SA.Advanced
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Домашняя страница
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Домашняя страница
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Сайт курсовой работы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Документация
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Документация
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Глоссарий
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../business%20idea/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Общие сведения
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../characteristics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Характеристики объекта автоматизации
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../business%20prosess/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Описание бизнес-процесса
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Требования к системе
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nfr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Нефункциональные требования системы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Модели
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Модели
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Моделирование системы
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Интерфейсы
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Интерфейсы
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Дизайн
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API приложения
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_tablo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API терминала покупателя
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api_screen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API табло покупателя
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Задачи
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Задачи
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Задачи проекта
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Задачи MVP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Сценарии тестирования для задач MVP
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Сценарии тестирования для задач MVP
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#test-us001" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test US.001
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test US.001">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Позитивный сценарий: Взаимодействие с меню ресторана
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Негативный сценарий 1: Просмотр недоступного блюда
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Негативный сценарий 2: Обновление меню в реальном времени
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-us002" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test US.002
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test US.002">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Позитивный сценарий: Работа с категориями меню
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Негативный сценарий 1: Выбор несуществующей категории
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Негативный сценарий 2: Фильтрация по недоступным типам
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-us003" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test US.003
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test US.003">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Позитивный сценарий: Добавление и изменение количества блюд
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Негативный сценарий 1: Некорректное количество
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Негативный сценарий 2: Добавление недоступного блюда
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-us004" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test US.004
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-us005" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test US.005
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TestScenariosR1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Сценарии тестирования для Релиза 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mvp">Сценарии тестирования для задач MVP</h1>
+<h2 id="test-us001">Test US.001</h2>
+<h3 id="_1">Позитивный сценарий: Взаимодействие с меню ресторана</h3>
+<p><strong>Цель:</strong> Проверить полный цикл работы с меню - от просмотра до оформления заказа</p>
+<p><strong>Шаги:</strong>
+1. Открыть главную страницу ресторана
+2. Проверить отображение всех элементов меню:
+   - Названия блюд
+   - Описания
+   - Цены
+   - Изображения (при наличии)
+3. Изменить язык интерфейса на английский
+4. Применить фильтр "Десерты"
+5. Выбрать блюдо "Тирамису"
+6. Проверить детальную информацию:
+   - Полное описание
+   - Состав
+   - Аллергены
+   - Кнопку "Добавить в заказ"
+7. Добавить блюдо в корзину
+8. Нажать "Перейти к оформлению"
+9. Вернуться в главное меню</p>
+<p><strong>Ожидаемый результат:</strong>
+- Полное меню отображается корректно на выбранном языке
+- Фильтр по категориям работает без ошибок
+- Детальная информация о блюде содержит все необходимые данные
+- Переход между разделами происходит плавно
+- Система сохраняет добавленные позиции</p>
+<h3 id="1">Негативный сценарий 1: Просмотр недоступного блюда</h3>
+<p><strong>Цель:</strong> Проверить обработку запроса недоступного блюда</p>
+<p><strong>Шаги:</strong>
+1. Ввести в поиск "Фуа-гра" (недоступное блюдо)
+2. Попытаться открыть карточку блюда
+3. Проверить отображение системы</p>
+<p><strong>Ожидаемый результат:</strong>
+- Появляется четкое сообщение: "Блюдо временно недоступно"
+- Кнопка добавления в корзину неактивна или отсутствует
+- Система предлагает аналогичные доступные варианты</p>
+<h3 id="2">Негативный сценарий 2: Обновление меню в реальном времени</h3>
+<p><strong>Цель:</strong> Проверить синхронизацию данных при изменении меню</p>
+<p><strong>Шаги:</strong>
+1. Открыть страницу с меню
+2. В админ-панели изменить:
+   - Цену "Цезарь" с 350 → 400 руб
+   - Статус "Тирамису" на "Недоступно"
+3. Дождаться автоматического обновления (до 30 сек)
+4. Проверить:
+   - Новую цену салата
+   - Статус десерта</p>
+<p><strong>Ожидаемый результат:</strong>
+- Изменения отражаются без перезагрузки страницы
+- У "Тирамису" появляется пометка "Нет в наличии"
+- Цена "Цезаря" обновляется корректно
+- Нет ошибок в консоли или визуальных артефактов</p>
+<h2 id="test-us002">Test US.002</h2>
+<h3 id="_2">Позитивный сценарий: Работа с категориями меню</h3>
+<p><strong>Цель:</strong> Проверить корректность отображения и переключения между категориями блюд</p>
+<p><strong>Шаги:</strong>
+1. Открыть страницу меню ресторана
+2. Проверить наличие основных категорий:
+   - Закуски
+   - Основные блюда
+   - Десерты
+   - Напитки
+3. Выбрать категорию "Десерты"
+4. Убедиться:
+   - В заголовке отображается название категории
+   - Имеется краткое описание категории
+   - В списке присутствуют только десерты
+5. Переключиться на категорию "Напитки"
+6. Проверить:
+   - Мгновенное обновление списка
+   - Соответствие блюд выбранной категории
+7. Вернуться к полному списку категорий
+8. Выбрать "Закуски" и проверить содержимое</p>
+<p><strong>Ожидаемый результат:</strong>
+- Все категории отображаются с названиями и описаниями
+- Переключение между категориями происходит мгновенно
+- В каждой категории показываются только соответствующие блюда
+- Возможность вернуться к полному списку категорий</p>
+<h3 id="1_1">Негативный сценарий 1: Выбор несуществующей категории</h3>
+<p><strong>Цель:</strong> Проверить обработку запроса несуществующей категории</p>
+<p><strong>Шаги:</strong>
+1. Вручную ввести в адресной строке "/menu/несуществующая-категория"
+2. Или выбрать из фильтров "Морепродукты" (при отсутствии такой категории)
+3. Проверить реакцию системы</p>
+<p><strong>Ожидаемый результат:</strong>
+- Отображается понятное сообщение: "Категория не найдена"
+- Предлагаются доступные категории для перехода
+- Нет ошибок в консоли или визуальных артефактов</p>
+<h3 id="2_1">Негативный сценарий 2: Фильтрация по недоступным типам</h3>
+<p><strong>Цель:</strong> Проверить поведение системы при применении нерелевантных фильтров</p>
+<p><strong>Шаги:</strong>
+1. Открыть страницу меню
+2. В фильтрах выбрать:
+   - "Веганские" (при отсутствии таких блюд)
+   - Ценовой диапазон 5000-10000 руб
+3. Применить фильтры
+4. Проверить отображение</p>
+<p><strong>Ожидаемый результат:</strong>
+- Показывается сообщение: "По выбранным фильтрам блюд не найдено"
+- Кнопка "Сбросить фильтры" активна и работает
+- Основное меню не искажено
+- Возможность выбрать другие фильтры</p>
+<h2 id="test-us003">Test US.003</h2>
+<h3 id="_3">Позитивный сценарий: Добавление и изменение количества блюд</h3>
+<p><strong>Цель:</strong> Проверить корректность работы с количеством позиций при формировании заказа</p>
+<p><strong>Шаги:</strong>
+1. Открыть раздел "Основные блюда"
+2. Выбрать "Бургер классический" (цена 450 руб)
+3. Установить количество: 2
+4. Нажать "Добавить в корзину"
+5. Проверить:
+   - Появление тоста "2 × Бургер добавлен в корзину"
+   - Обновление счетчика в шапке сайта (+2)
+6. Перейти в корзину
+7. Проверить:
+   - Наличие позиции "Бургер классический"
+   - Количество: 2
+   - Сумму: 900 руб
+8. Изменить количество на 3
+9. Нажать "Обновить корзину"
+10. Убедиться:
+    - Количество изменилось на 3
+    - Сумма пересчиталась на 1350 руб
+    - Итоговая сумма обновилась</p>
+<p><strong>Ожидаемый результат:</strong>
+- Четкое визуальное подтверждение добавления
+- Корректное отображение и пересчет при изменении количества
+- Сохранение изменений при обновлении</p>
+<h3 id="1_2">Негативный сценарий 1: Некорректное количество</h3>
+<p><strong>Цель:</strong> Проверить валидацию ввода количества</p>
+<p><strong>Шаги:</strong>
+1. Выбрать "Салат Цезарь"
+2. В поле количества ввести:
+   - Вариант 1: 0
+   - Вариант 2: -1
+   - Вариант 3: пустое значение
+3. Нажать "Добавить в корзину"</p>
+<p><strong>Ожидаемый результат:</strong>
+- Для 0 и отрицательных чисел: сообщение "Введите количество от 1 до 10"
+- Для пустого значения: восстановление значения по умолчанию (1)
+- Позиция не добавляется в корзину
+- Счетчик в шапке не изменяется</p>
+<h3 id="2_2">Негативный сценарий 2: Добавление недоступного блюда</h3>
+<p><strong>Цель:</strong> Проверить обработку попытки добавления удаленного блюда</p>
+<p><strong>Шаги:</strong>
+1. Добавить "Тирамису" в корзину
+2. Через админ-панель сделать блюдо недоступным
+3. Обновить страницу меню
+4. Попытаться повторно добавить "Тирамису"
+5. Проверить состояние корзины</p>
+<p><strong>Ожидаемый результат:</strong>
+- Сообщение "Тирамису временно недоступен"
+- В корзине сохраняется предыдущая добавленная позиция
+- Цена и доступность других блюд не изменяются
+- Кнопка добавления неактивна (или заменена на "Нет в наличии")</p>
+<h2 id="test-us004">Test US.004</h2>
+<p><strong>Позитивный сценарий:</strong> Успешный просмотр финального заказа с детализацией
+<strong>Цель:</strong> Проверить, что пользователь видит полную разбивку заказа по блюдам с корректными ценами и может перейти к оформлению.</p>
+<p><strong>Шаги:</strong>
+1. Добавить в корзину:
+   - "Салат Цезарь" (2 шт)
+   - "Гаспачо" (1 шт)
+2. Перейти в корзину
+3. Проверить отображение:
+   - Названия обоих блюд
+   - Количества (2 и 1 соответственно)
+   - Цены за единицу
+   - Суммы по каждой позиции
+4. Проверить расчет:
+   - Промежуточной суммы
+   - Налогов (если есть)
+   - Итоговой суммы
+5. Нажать "Оформить заказ"
+6. Убедиться в сохранении данных заказа</p>
+<p><strong>Ожидаемый результат:</strong>
+Все блюда отображаются с правильными названиями, количеством и ценами.
+Все суммы рассчитаны корректно.
+Данные сохраняются при переходе к оформлению.</p>
+<p><strong>Негативный сценарий 1:</strong> Просмотр пустой корзины
+<strong>Цель:</strong> Проверить отображение пустой корзины.</p>
+<p><strong>Шаги:</strong>
+1. Очистить корзину
+2. Перейти в раздел корзины
+3. Проверить:
+   - Сообщение о пустой корзине
+   - Отсутствие кнопки оформления
+   - Наличие кнопки возврата в меню</p>
+<p><strong>Ожидаемый результат:</strong>
+Отображается сообщение "Ваша корзина пуста".
+Кнопка оформления недоступна.
+Есть возможность вернуться в меню.</p>
+<p><strong>Негативный сценарий 2:</strong> Изменение цен после добавления в корзину
+<strong>Цель:</strong> Проверить обработку изменения цен.</p>
+<p><strong>Шаги:</strong>
+1. Добавить "Стейк" по цене 1500 руб
+2. Имитировать изменение цены до 1700 руб
+3. Перейти в корзину
+4. Проверить:
+   - Отображаемую цену
+   - Наличие уведомления
+   - Итоговую сумму</p>
+<p><strong>Ожидаемый результат:</strong>
+Система либо сохраняет исходную цену, либо явно уведомляет об изменении.
+Итоговая сумма корректна.
+Пользователь информирован о ситуации.</p>
+<h2 id="test-us005">Test US.005</h2>
+<p><strong>Позитивный сценарий:</strong> Успешное удаление товара из корзины
+<strong>Цель:</strong> Проверить возможность удаления позиции из корзины и автоматический пересчет суммы.</p>
+<p><strong>Шаги:</strong>
+1. Добавить в корзину:
+   - "Салат Греческий" (1 шт)
+   - "Суп Том Ям" (2 шт)
+2. Перейти в корзину
+3. Нажать иконку удаления рядом с "Суп Том Ям"
+4. Подтвердить удаление во всплывающем окне
+5. Проверить:
+   - Исчезновение удаленной позиции
+   - Обновленную общую сумму
+   - Появление уведомления "Позиция удалена"
+6. Убедиться, что оставшиеся позиции не изменились</p>
+<p><strong>Ожидаемый результат:</strong>
+Удаленная позиция больше не отображается в корзине.
+Общая сумма уменьшилась на стоимость удаленного товара.
+Появилось подтверждение удаления.
+Оставшиеся позиции сохранились без изменений.</p>
+<p><strong>Негативный сценарий 1:</strong> Удаление последнего товара из корзины
+<strong>Цель:</strong> Проверить поведение системы при опустошении корзины.</p>
+<p><strong>Шаги:</strong>
+1. Добавить "Чизкейк" (1 шт)
+2. Перейти в корзину
+3. Удалить "Чизкейк"
+4. Проверить:
+   - Сообщение "Корзина пуста"
+   - Исчезновение кнопки "Оформить заказ"
+   - Появление кнопки "Вернуться в меню"</p>
+<p><strong>Ожидаемый результат:</strong>
+Отображается сообщение о пустой корзине.
+Кнопка оформления стала недоступной.
+Появилась кнопка возврата в меню.</p>
+<p><strong>Негативный сценарий 2:</strong> Отмена удаления товара
+<strong>Цель:</strong> Проверить возможность отмены удаления позиции.</p>
+<p><strong>Шаги:</strong>
+1. Добавить "Ролл Филадельфия" (3 шт)
+2. Перейти в корзину
+3. Нажать иконку удаления
+4. Во всплывающем окне нажать "Отмена"
+5. Проверить:
+   - Сохранение позиции в корзине
+   - Отсутствие изменений в общей сумме</p>
+<p><strong>Ожидаемый результат:</strong>
+Товар остался в корзине.
+Общая сумма не изменилась.
+Уведомление об удалении не появилось.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/tsvetkoviu"  target="_blank" rel="noopener">Ilia Tsvetkov</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  </body>
+</html>

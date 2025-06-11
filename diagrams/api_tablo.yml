@@ -1,0 +1,171 @@
+openapi: 3.0.0
+info:
+  title: API терминала покупателя 
+  description: |
+    Управление корзиной, оплатой и статусами заказов.
+    Для аутентификации используйте `Authorization: Bearer <JWT>`.
+  version: 1.0.0
+
+servers:
+  - url: https://api.yourdomain.com/v1
+    description: Production server
+
+tags:
+  - name: Cart
+    description: Операции с корзиной
+  - name: Payment
+    description: Платежи и транзакции
+
+paths:
+  # --- Корзина ---
+  /api/cart/add:
+    post:
+      tags: [Cart]
+      summary: Добавить товар в корзину
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CartItemRequest"
+            example:
+              product_id: 123
+              quantity: 2
+              user_id: "user_abc"
+      responses:
+        200:
+          description: Товар добавлен
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CartResponse"
+              example:
+                status: "success"
+                cart:
+                  items:
+                    - product_id: 123
+                      name: "Бургер"
+                      price: 250
+                      quantity: 2
+                  total: 500
+
+  /api/cart:
+    get:
+      tags: [Cart]
+      summary: Получить корзину
+      responses:
+        200:
+          description: Успешный запрос
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CartResponse"
+
+  # --- Оплата ---
+  /api/payment/create:
+    post:
+      tags: [Payment]
+      summary: Создать платеж
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentRequest"
+            example:
+              order_id: "order_123"
+              amount: 500
+              payment_method: "card"
+      responses:
+        200:
+          description: Платеж инициирован
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentResponse"
+              example:
+                payment_id: "pay_xyz"
+                status: "pending"
+                confirmation_url: "https://payment-gateway/confirm?token=abc"
+
+components:
+  schemas:
+    # --- Запросы ---
+    CartItemRequest:
+      type: object
+      required: [product_id, quantity]
+      properties:
+        product_id:
+          type: integer
+          example: 123
+        quantity:
+          type: integer
+          minimum: 1
+          example: 2
+        user_id:
+          type: string
+          example: "user_abc"
+
+    PaymentRequest:
+      type: object
+      required: [order_id, amount]
+      properties:
+        order_id:
+          type: string
+          example: "order_123"
+        amount:
+          type: number
+          minimum: 1
+          example: 500
+        payment_method:
+          type: string
+          enum: [card, apple_pay, google_pay]
+          default: "card"
+
+    # --- Ответы ---
+    CartResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [success, error]
+        cart:
+          type: object
+          properties:
+            items:
+              type: array
+              items:
+                type: object
+                properties:
+                  product_id:
+                    type: integer
+                  name:
+                    type: string
+                  price:
+                    type: number
+                  quantity:
+                    type: integer
+            total:
+              type: number
+
+    PaymentResponse:
+      type: object
+      properties:
+        payment_id:
+          type: string
+        status:
+          type: string
+          enum: [pending, success, failed]
+        confirmation_url:
+          type: string
+          nullable: true
+
+  # --- Безопасность ---
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+security:
+  - BearerAuth: []

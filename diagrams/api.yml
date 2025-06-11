@@ -1,0 +1,445 @@
+openapi: 3.0.0
+info:
+  title: RoboFFR API
+  version: 3.0.1
+
+paths:
+  /auth/login:
+    post:
+      tags: 
+        - Технические методы
+      summary: Аутентификация пользователя
+      description: Позволяет пользователю войти в систему, используя логин и пароль.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - username
+                - password
+              properties:
+                username:
+                  type: string
+                  description: Имя пользователя
+                password:
+                  type: string
+                  format: password
+                  description: Пароль пользователя
+      responses:
+        '200':
+          description: Успешная аутентификация
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                    format: JWT
+                    description: Токен доступа
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkhhcnJ5IFBvdHRlciIsImlhdCI6MTUxNjIzOTAyMn0.Jkr1iBrO9-cr7uZRYhvE8BuSXIfuPnQWuZBNBE60t14
+        '401':
+          description: Неверные учетные данные
+        '500':
+          description: Внутренняя ошибка сервера
+
+  /dishes:
+    get:
+      tags: 
+        - Просмотр блюд
+      security:
+        - bearerAuth: []
+      summary: Получение списка блюд
+      parameters:
+        - in: query
+          name: cusine
+          schema:
+            type: string
+            enum:
+              - russian
+              - italian
+              - georgian
+              - asian
+          description: Фильтр по типу кухни
+        - in: query
+          name: category
+          schema:
+            type: string
+            enum:
+              - starter
+              - mainCourse
+              - dessert
+              - soup
+              - salad
+              - sideDish
+              - beverage
+          description: Фильтр по категории блюда
+        - in: query
+          name: rating
+          schema:
+            type: string
+            enum: 
+              - Превосходно
+              - Выше Ожидаемого
+              - Удовлетворительно
+              - Слабо
+              - Отвратительно
+              - Тролль
+          description: Фильтр по рейтингу блюда
+        - in: query
+          name: price_min
+          schema:
+            type: number
+          description: Минимальная цена блюда
+        - in: query
+          name: price_max
+          schema:
+            type: number
+          description: Максимальная цена блюда
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+          description: Номер страницы для пагинации
+        - in: query
+          name: pageSize
+          schema:
+            type: integer
+            default: 10
+          description: Количество блюд на странице
+      responses:
+        '200':
+          description: Список блюд
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                    description: Общее количество блюд, соответствующих фильтрам
+                  dishes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Dish'
+                  page:
+                    type: integer
+                    description: Текущая страница
+                  pageSize:
+                    type: integer
+                    description: Количество блюд на странице        
+
+  /orders/{orderId}/status:
+    get:
+      tags: 
+        - Управление заказами
+      security: 
+        - bearerAuth: []
+      summary: Получить статус заказа
+      description: Метод для получения статуса заказа
+      parameters: 
+        - name: orderId
+          in: path
+          required: true
+          description: Уникальный идентификатор заказа
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Текущий статус заказа
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    description: Статус заказа
+        '404':
+          description: Заказ не найден
+
+  /orders:
+    post:
+      tags: 
+        - управление заказами
+      security:
+        - bearerAuth: []
+      summary: Оформление заказа
+      description: Метод для оформления заказа на основании корзины покупателя с любым количеством позиций.
+      parameters: 
+        - name: userId
+          in: query
+          required: false
+          description: Уникальный идентификатор пользователя, чей заказ нужно повторить
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cart:
+                  $ref: '#/components/schemas/OrderItems'
+      responses:
+        '200':
+          description: Заказ успешно оформлен
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message: 
+                    type: string
+                    example: "Заказ успешно оформлен" 
+                  order_details:
+                    type: array
+                    items:
+                      type: string
+                  total_cost:
+                    type: integer
+                example:
+                  productId: "1"
+                  quantity: "2"
+                  name: "Бургер"
+                  price: 150
+        '400':
+          description: Ошибка в запросе
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                example:
+                  error: "Ошибка: Корзина не может быть пустой."
+
+  /orders/history:
+    get:
+      tags:
+        - Управление заказами
+      security: 
+        - bearerAuth: []
+      summary: Просмотр истории заказов
+      description: Возвращает историю заказов текущего пользователя
+      parameters: 
+        - name: userId
+          in: query
+          description: Уникальный идентификатор пользователя
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: История заказов пользователя
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+
+  /orders/{orderId}/repeat:
+    post:
+      tags:
+        - Управление заказами
+      security:
+        - bearerAuth: []
+      summary: Повторение заказа
+      description: Создает новый заказ на основе предыдущего заказа пользователя.
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          description: Уникальный идентификатор предыдущего заказа
+          schema:
+            type: string
+        - name: userId
+          in: query
+          required: false
+          description: Уникальный идентификатор пользователя, чей заказ нужно повторить
+          schema:
+            type: string
+      responses:
+        '201':
+          description: Заказ успешно повторен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Неверный запрос
+        '401':
+          description: Пользователь не авторизован
+        '404':
+          description: Заказ не найден
+        '500':
+          description: Внутренняя ошибка сервера
+
+  /dishes/{dishId}/reviews:
+    post:
+      tags:
+        - Отзывы
+      security:
+        - bearerAuth: []
+      summary: Добавление отзыва о блюде
+      description: Позволяет добавить пользователям отзыв о блюде
+      parameters:
+        - name: dishId
+          in: path
+          required: true
+          description: Уникальный идентификатор блюда
+          schema:
+            type: string
+        - name: userId
+          in: query
+          required: false
+          description: Уникальный идентификатор клиента
+          schema: 
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - rating
+                - comment
+              properties:
+                rating:
+                  type: string
+                  enum:
+                    - Замечательно
+                    - Очень хорошо
+                    - Хорошо
+                    - Плохо
+                    - Очень плохо
+                    - Отвратительно
+                  description: Рейтинг блюда от пользователя
+                comment:
+                  type: string
+                  description: Текстовый отзыв пользователя
+      responses:
+        '201': 
+          description: Отзыв успешно добавлен
+        '400':
+          description: Неверный запрос
+        '401':
+          description: Пользователь не авторизован
+        '404':
+          description: Блюдо не найдено
+        '500':
+          description: Внутренняя ошибка сервера
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Dish:
+      description: |
+        Объект "Блюдо". Содержит основную информацию о блюде меню, включая его идентификатор, название и ссылку на изображение.
+      type: object
+      properties:
+        id:
+          type: string
+          description: Уникальный идентификатор блюда
+        name:
+          type: string
+          description: Название блюда
+        imageLink:
+          type: string
+          format: url
+          example: https://static.wikia.nocookie.net/harrypotter/images/c/c5/Pumpkin_Juice_WWHP.jpg/revision/latest/scale-to-width-down/1000?cb=20110529053444
+          description: Ссылка на изображение блюда
+
+    Order:
+      description: |
+        Информация о заказе, включая статус, список позиций, даты, адрес и способ оплаты.
+      type: object
+      properties:
+        orderId:
+          type: string
+          description: Уникальный идентификатор заказа
+        status:
+          type: string
+          description: Текущий статус заказа
+        items:
+          type: array
+          description: Массив позиций заказа
+          items:
+            $ref: '#/components/schemas/OrderItems'
+        totalPrice:
+          type: number
+          format: float
+          description: Общая стоимость заказа
+        orderDate:
+          type: string
+          format: date-time
+          description: Дата и время создания заказа
+        deliveryDate:
+          type: string
+          format: date-time
+          description: Дата и время доставки заказа
+        deliveryAddress:
+          type: string
+          description: Адрес доставки
+        paymentMethod:
+          type: string
+          description: Используемый способ оплаты
+          enum:
+            - card
+            - ewallet
+            - sbp
+            - tpay
+            - spay
+            - cash
+
+    OrderItems:
+      description: |
+        Корзина товаров или позиции в заказе — составной объект из массива товаров с их количеством, названием и ценой.
+      type: object
+      properties:
+        items:
+          type: array
+          description: Массив товаров в заказе или корзине
+          items:
+            type: object
+            description: Описание одного товара в заказе/корзине
+            properties: 
+              productId: 
+                type: string
+                description: Уникальный идентификатор товара
+              quantity:
+                type: integer
+                description: Количество единиц товара
+              name:
+                type: string
+                description: Наименование товара
+              price:
+                type: number
+                format: float
+                description: Цена единицы товара
+      example:
+        items:
+          - productId: "1"
+            quantity: 2
+            name: "Бургер"
+            price: 150
+          - productId: "2"
+            quantity: 1
+            name: "Картофель фри"
+            price: 75.00
+
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/tsvetkoviu/RobotPetProj/3.0.1
