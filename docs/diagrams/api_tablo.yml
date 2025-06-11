@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Табло покупателя API
+  title: API терминала покупателя 
   description: |
     Управление корзиной, оплатой и статусами заказов.
     Для аутентификации используйте `Authorization: Bearer <JWT>`.
