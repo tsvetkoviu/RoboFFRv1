@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: Табло покупателя API
+  version: 1.0.0
+
+paths:
+  /api/cart/add:
+    post:
+      summary: Добавить товар в корзину
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_id:
+                  type: integer
+                quantity:
+                  type: integer
+      responses:
+        '200':
+          description: Успешное добавление
+
+  /api/payment/create:
+    post:
+      summary: Инициировать платеж
+      responses:
+        '200':
+          description: Платеж создан
